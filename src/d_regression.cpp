@@ -2,7 +2,7 @@
 #include <string>
 #include <val_utils.h>
 #include <d_array.h>
-#include <LA.cpp>
+#include <LA.h>
 #include <fstream>
 #include <pol_arithmetic.h>
 
