@@ -1,9 +1,11 @@
 CXXFLAGS = -O2 -Wall -pedantic-errors -pedantic -std=c++14  `val-config --cflags` 
-LDFLAGS = -s `val-config --libs`
+LDFLAGS = `val-config --libs`
 BIN = bin
 CXX = g++
 
-OBJECTS = d_regreesion.cpp polfactor.cpp
+CPPOBJECTS = $(wildcard src/*.cpp)
+DIROBJECTS = $(basename $(CPPOBJECTS))
+OBJECTS = $(notdir $(DIROBJECTS))
   
 .PHONY ALL:
  
