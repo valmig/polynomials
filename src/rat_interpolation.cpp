@@ -85,25 +85,33 @@ val::matrix<val::rational> set_les2(const std::string &s)
     std::string svalue="";
     val::rational value;
 
-    while (s[i]==' ' || s[i]=='\n' || s[i] == ';') ++i;
     j=0;
-    for (;i<n;++i) {
-        if (s[i]==' ' || s[i]== '\n' || s[i]==';') {
+    for (i=0;i<n;++i) {
+        if (s[i]==' ' || s[i]== '\n' || s[i] == ';') {
+            if (s[i]==' ' || s[i] == '\n') {
+                while (i<n && (s[i] == ' ' || s[i]=='\n')) ++i;
+                --i;
+            }
             j%=2;
-            value=val::FromString<val::rational>(svalue);
-            svalue="";
-            if (!j) {
-                //if (!isinarray(value,x[k])) {
-                if (!val::isinContainer(value,x[k])) {
-                    x[k].push_back(value);
+            if (svalue!="") {
+                value=val::FromString<val::rational>(svalue);
+                svalue="";
+                if (!j) {
+                    if (!isinarray(value,x[k])) {
+                        x[k].push_back(value);
+                        ++j;
+                    }
+                }
+                else {
+                    y[k].push_back(value);
                     ++j;
                 }
             }
-            else {
-                y[k].push_back(value);
-                ++j;
+            if (s[i]==';') {
+                while (i<n && s[i]==';') {++k;++i;}
+                --i;
+                if (k>2) k=2;
             }
-            if (s[i]==';' && k<2) k++;
         }
         else svalue+=s[i];
     }
