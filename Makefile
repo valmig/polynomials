@@ -15,7 +15,7 @@ create_dirs:
 	mkdir -p $(BIN)
 
 $(OBJECTS): % : src/%.cpp
-	${CXX} $(CXXFLAGS) $(LDFLAGS) src/$@.cpp -o ${BIN}/$@
+	${CXX} $(CXXFLAGS) $(LDFLAGS)  src/$@.cpp -o ${BIN}/$@
 
 
 .PHONY clean:
