@@ -3,7 +3,7 @@
 #include <vector.h>
 #include <complex.h>
 #include <polfactor.h>
-#include <function_parser.h>
+#include <valfunction.h>
 #include <d_array.h>
 #include <pol_arithmetic.h>
 

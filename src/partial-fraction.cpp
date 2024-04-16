@@ -1,5 +1,5 @@
 #include <polfactor.h>
-#include <function_parser.h>
+#include <valfunction.h>
 #include <pol_arithmetic.h>
 #include <LA.h>
 #include <fraction.h>

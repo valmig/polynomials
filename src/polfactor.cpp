@@ -3,7 +3,7 @@
 #include <fstream>
 #include <val_utils.h>
 #include <val_basics.h>
-#include <function_parser.h>
+#include <valfunction.h>
 #include <pol_arithmetic.h>
 #include <MyTime.h>
 
@@ -56,7 +56,7 @@ int main(int argnr, char* argv[])
         program_info();
         return 0;
     }
-    else if (argnr > 3) {
+	else if (argnr > 3) {
 		std::cout << "\n Too many arguments. Quit program!!\n";
 		return 0;
 	}
