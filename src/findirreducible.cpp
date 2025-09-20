@@ -67,14 +67,14 @@ val::pol<val::modq> findirreducible(int n)
        if (f[0]==val::modq(0)) f.insert(val::modq(1),0);
        g=powermod(x,q,f);
        for (i=1;i<=m;i++)
-	   if (val::gcd(g-x,f)!=1) {
-	      fertig=0;
-	      break;
-	   }
-	   else {
-	      fertig=1;
-	      g=powermod(g,q,f);
-	   }
+       if (val::gcd(g-x,f)!=1) {
+          fertig=0;
+          break;
+       }
+       else {
+          fertig=1;
+          g=powermod(g,q,f);
+       }
  }
  return f;
 }
@@ -82,17 +82,17 @@ val::pol<val::modq> findirreducible(int n)
 
 int main(int argnr,char* argv[])
 {
-	std::string firstarg;
-	if (argnr >= 2) firstarg = std::string(argv[1]);
-	
-	if (argnr == 1 || (argnr == 2 && (firstarg == "-h" || firstarg == "--help") )) {
+    std::string firstarg;
+    if (argnr >= 2) firstarg = std::string(argv[1]);
+
+    if (argnr == 1 || (argnr == 2 && (firstarg == "-h" || firstarg == "--help") )) {
         program_info();
         return 0;
     }
     if (argnr != 3) {
-		std::cout << "\nProgram requires 2 arguments!" << std::endl;
-		return 1;
-	}
+        std::cout << "\nProgram requires 2 arguments!" << std::endl;
+        return 1;
+    }
     
     val::initialize_random();
     val::modq::q = val::FromString<int>(firstarg);

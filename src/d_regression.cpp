@@ -44,10 +44,10 @@ val::d_array<double> GetPoints(const std::string& s)
 void point_statistics(const val::d_array<double>& Points, const double &epsilon = 1e-9)
 {
     int i, n = Points.length()/2;
-    double Ex = 0, Ey = 0, Vx = 0, Vy = 0, Cxy = 0, rhoxy = 0, dn = double(n), v, w, sigmax, sigmay;
+    double Ex = 0, Ey = 0, Vx = 0, Vy = 0, Cxy = 0, rhoxy = 0, dn = double(n), v, w, sigmax, sigmay, s2x, s2y;
     std::string sigma("\u03C3"), rho("\u03C1");
 
-    if (n < 1) return;
+    if (n < 2) return;
 
     for (i = 0; i < n; ++i) {
         Ex += Points[2*i];
@@ -62,11 +62,14 @@ void point_statistics(const val::d_array<double>& Points, const double &epsilon 
         Vx += v*v;
         Vy += w*w;
     }
+    s2x = Vx/(dn-1); s2y = Vy/(dn-1);
     Vx /= dn; Vy /= dn; Cxy /= dn;
     sigmax = val::sqrt(Vx); sigmay = val::sqrt(Vy);
 
     std::cout << "\n E(X) = " << Ex << ", V(X) = " << Vx << " , " << sigma << "(X) = " << sigmax;
+    std::cout << "\n S²(X) = " << s2x << ", sx = " << val::sqrt(s2x) << "\n";
     std::cout << "\n E(Y) = " << Ey << ", V(Y) = " << Vy << " , " << sigma << "(Y) = " << sigmay << std::endl;
+    std::cout << "\n S²(Y) = " << s2x << ", sy = " << val::sqrt(s2y) << "\n";
     std::cout << "\n C(X,Y) = " << Cxy;
 
     if ((val::abs(Vx) > epsilon) && (val::abs(Vy) > epsilon)) {

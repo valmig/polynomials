@@ -40,8 +40,8 @@ int main(int argnr,char* argv[])
 	if (argnr == 1 || (argnr == 2 && (firstarg == "-h" || firstarg == "--help") )) {
         program_info();
         return 0;
-    }
-    else if (argnr == 3) {
+	}
+	else if (argnr == 3) {
 		if (firstarg == "-r") {
 			computerational = 1;
 			firstarg = std::string(argv[2]);
@@ -51,7 +51,7 @@ int main(int argnr,char* argv[])
 			return 1;
 		}
 	}		 
-    else if (argnr > 3) {
+	else if (argnr > 3) {
 		std::cout << "\n Too many arguments. Quit program!!\n";
 		return 1;
 	}

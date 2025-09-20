@@ -29,7 +29,6 @@ int isinfix(const std::string &s)
     for (i=0;i<n;i++)
         if (s[i]=='x') return 1;
     return 0;
-
 }
 
 

@@ -6,9 +6,9 @@ CXX = g++
 CPPOBJECTS = $(wildcard src/*.cpp)
 DIROBJECTS = $(basename $(CPPOBJECTS))
 OBJECTS = $(notdir $(DIROBJECTS))
-  
+
 .PHONY ALL:
- 
+
 ALL: create_dirs $(OBJECTS)
 
 create_dirs:
